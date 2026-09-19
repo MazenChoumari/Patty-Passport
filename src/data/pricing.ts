@@ -89,6 +89,20 @@ export const MINIMUM_SPEND = {
   child: 8,
 } as const;
 
+// Events & Birthdays pricing — Section 5.5.
+export const EVENTS_PRICING = {
+  littleExplorer: { pricePerChild: 18, minChildren: 8 },
+  worldExplorer: { pricePerChild: 22, minChildren: 10 },
+  countryNightKidsBundle: 15,
+  countryNightHallFeeMin: 80,
+  countryNightHallFeeMax: 120,
+  countryNightMinSpend: 400,
+  ramadanAdult: 22,
+  ramadanKids: 14,
+  lentFridayComboMin: 13,
+  lentFridayComboMax: 14,
+} as const;
+
 // Passport stamp reward ladder — Section 5.4.
 export const REWARD_LADDER = [
   { stamps: 3, reward: "Free drink" },
