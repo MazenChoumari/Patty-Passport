@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Sky blue — Mediterranean sky & clouds */
+  --color-brand-sky-light: #eaf6fd;
+  --color-brand-sky: #4fb6e8;
+  --color-brand-sky-dark: #1d6fa5;
+
+  /* Passport red */
+  --color-brand-red-light: #f8dcd9;
+  --color-brand-red: #d8443c;
+  --color-brand-red-dark: #a32c26;
+
+  /* Warm sun yellow */
+  --color-brand-yellow-light: #fff1cf;
+  --color-brand-yellow: #f5b942;
+  --color-brand-yellow-dark: #cf9420;
+
+  /* Cream / sand */
+  --color-brand-cream: #fcf6ea;
+  --color-brand-cream-dark: #f2e6cf;
+
+  /* Deep navy — text/contrast, used instead of pure black */
+  --color-brand-navy: #16324f;
+  --color-brand-navy-light: #2e4f73;
+
+  --background: var(--color-brand-cream);
+  --foreground: var(--color-brand-navy);
 }
 
 @theme inline {
+  --color-sky-light: var(--color-brand-sky-light);
+  --color-sky: var(--color-brand-sky);
+  --color-sky-dark: var(--color-brand-sky-dark);
+
+  --color-passport-red-light: var(--color-brand-red-light);
+  --color-passport-red: var(--color-brand-red);
+  --color-passport-red-dark: var(--color-brand-red-dark);
+
+  --color-sun-light: var(--color-brand-yellow-light);
+  --color-sun: var(--color-brand-yellow);
+  --color-sun-dark: var(--color-brand-yellow-dark);
+
+  --color-cream: var(--color-brand-cream);
+  --color-cream-dark: var(--color-brand-cream-dark);
+
+  --color-navy: var(--color-brand-navy);
+  --color-navy-light: var(--color-brand-navy-light);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-heading: var(--font-fredoka);
+  --font-sans: var(--font-jakarta);
+
+  --animate-drift: drift 40s linear infinite;
+  --animate-wave: wave 1.6s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(12deg);
+  }
+  75% {
+    transform: rotate(-8deg);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-fredoka), var(--font-jakarta), sans-serif;
 }
