@@ -14,16 +14,22 @@ export function DestinationsExplorer() {
 
   return (
     <div>
-      <section className="bg-white py-4">
+      <section className="bg-cream py-10">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <RouteMapRow activeSlug={activeSlug} onHoverSlug={setActiveSlug} />
 
           <div
             key={activeSlug}
-            className="mx-auto mt-6 max-w-md animate-[fadeIn_0.3s_ease-out] rounded-3xl border border-navy/10 bg-sky-light/60 p-6"
+            className="animate-stamp-in relative mx-auto mt-8 max-w-md rotate-[-1deg] rounded-3xl border-2 border-dashed border-navy/15 bg-[linear-gradient(180deg,#fffdf8,white)] p-7 shadow-[0_16px_32px_-12px_rgba(22,50,79,0.25)]"
           >
             <span
-              className="inline-block text-5xl animate-wave"
+              className="absolute -top-4 -right-3 flex h-14 w-14 rotate-[10deg] items-center justify-center rounded-full border-2 border-dashed border-passport-red bg-white text-[9px] font-bold uppercase text-passport-red shadow-sm"
+              aria-hidden="true"
+            >
+              #{String(active.destinationNumber).padStart(2, "0")}
+            </span>
+            <span
+              className="animate-wave inline-block text-5xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]"
               role="img"
               aria-label={`${active.name} flag`}
               style={{ transformOrigin: "70% 70%" }}

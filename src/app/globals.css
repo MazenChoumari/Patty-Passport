@@ -24,6 +24,13 @@
   --color-brand-navy: #16324f;
   --color-brand-navy-light: #2e4f73;
 
+  /* Extended atmosphere palette — dusk/night sky depth, sunset warmth */
+  --color-brand-ink: #0a1930;
+  --color-brand-dusk: #2a3d7a;
+  --color-brand-coral: #ff7a59;
+  --color-brand-coral-dark: #e2593a;
+  --color-brand-teal: #0d6e78;
+
   --background: var(--color-brand-cream);
   --foreground: var(--color-brand-navy);
 }
@@ -47,14 +54,24 @@
   --color-navy: var(--color-brand-navy);
   --color-navy-light: var(--color-brand-navy-light);
 
+  --color-ink: var(--color-brand-ink);
+  --color-dusk: var(--color-brand-dusk);
+  --color-coral: var(--color-brand-coral);
+  --color-coral-dark: var(--color-brand-coral-dark);
+  --color-teal: var(--color-brand-teal);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
   --font-heading: var(--font-fredoka);
   --font-sans: var(--font-jakarta);
 
-  --animate-drift: drift 40s linear infinite;
+  --animate-drift: drift 60s linear infinite;
+  --animate-drift-slow: drift 95s linear infinite;
   --animate-wave: wave 1.6s ease-in-out infinite;
+  --animate-stamp-in: stampIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-twinkle: twinkle 3.5s ease-in-out infinite;
+  --animate-bob: bob 5s ease-in-out infinite;
 }
 
 @keyframes drift {
@@ -90,6 +107,40 @@
   }
 }
 
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.6) rotate(-14deg);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-6deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -102,4 +153,54 @@ h3,
 h4,
 .font-heading {
   font-family: var(--font-fredoka), var(--font-jakarta), sans-serif;
+}
+
+/* Dusk-to-coral Mediterranean sunset — premium hero atmosphere */
+.bg-sunset-sky {
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 178, 107, 0.55), transparent 60%),
+    linear-gradient(
+      180deg,
+      var(--color-brand-ink) 0%,
+      var(--color-brand-dusk) 38%,
+      #b4548f 62%,
+      var(--color-brand-coral) 84%,
+      var(--color-brand-yellow) 100%
+    );
+}
+
+/* Deep night sky for CTA/footer-adjacent sections */
+.bg-night-sky {
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(79, 182, 232, 0.18), transparent 65%),
+    linear-gradient(180deg, var(--color-brand-ink) 0%, var(--color-brand-navy) 100%);
+}
+
+/* Subtle film-grain texture overlay for atmosphere */
+.bg-grain {
+  position: relative;
+  isolation: isolate;
+}
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
+}
+
+.stars::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(1.5px 1.5px at 20% 30%, white, transparent),
+    radial-gradient(1.5px 1.5px at 65% 15%, white, transparent),
+    radial-gradient(1px 1px at 80% 45%, white, transparent),
+    radial-gradient(1.5px 1.5px at 35% 65%, white, transparent),
+    radial-gradient(1px 1px at 90% 75%, white, transparent),
+    radial-gradient(1.5px 1.5px at 10% 80%, white, transparent),
+    radial-gradient(1px 1px at 50% 40%, white, transparent);
+  opacity: 0.7;
 }

@@ -3,6 +3,10 @@ import { CloudLayer } from "@/components/ui/CloudLayer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BoardingTicket } from "@/components/ui/BoardingTicket";
 import { CountryCarousel } from "@/components/ui/CountryCarousel";
+import { FlightRoute } from "@/components/ui/FlightRoute";
+import { StampBadge } from "@/components/ui/StampBadge";
+import { SunGlow } from "@/components/ui/SunGlow";
+import { WaveDivider } from "@/components/ui/WaveDivider";
 import { ReservationForm } from "@/components/home/ReservationForm";
 import { OpenTootyButton } from "@/components/ui/OpenTootyButton";
 import { countries } from "@/data/countries";
@@ -27,27 +31,28 @@ const PROMISE_BULLETS = [
   "No matter who you are, you are welcome: halal, kosher-sensitive, vegetarian, alcohol-free, or cocktail lovers — there is a lane for you.",
 ];
 
-const MAP_FLAGS = countries.filter((c) =>
-  ["lebanon", "greece", "italy", "spain", "turkey", "morocco"].includes(c.slug)
-);
+const MAP_FLAGS = countries
+  .filter((c) => ["lebanon", "greece", "italy", "spain", "turkey", "morocco"].includes(c.slug))
+  .map((c) => ({ emoji: c.flagEmoji, label: c.name }));
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-sky-light via-cream to-cream pt-16 pb-24 sm:pt-24">
-        <CloudLayer />
-        <div className="relative mx-auto max-w-3xl px-4 text-center">
-          <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-sky-dark">
+      <section className="bg-grain bg-sunset-sky relative overflow-hidden pt-16 pb-40 sm:pt-24 sm:pb-48">
+        <SunGlow className="left-1/2 top-[-9rem] -translate-x-1/2 opacity-70" />
+        <CloudLayer tone="dark" />
+        <div className="relative z-[2] mx-auto max-w-3xl px-4 text-center">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
             Mediterranean journeys. Global flavors.
           </p>
-          <h1 className="mt-4 font-heading text-5xl font-bold text-navy sm:text-6xl">
+          <h1 className="mt-4 font-heading text-5xl font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)] sm:text-7xl">
             Patty Passport
           </h1>
-          <p className="mt-4 font-heading text-xl font-semibold text-passport-red sm:text-2xl">
+          <p className="mt-4 font-heading text-xl font-semibold text-sun drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:text-2xl">
             Stamp your way through flavor.
           </p>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-navy-light">
+          <p className="mx-auto mt-6 max-w-xl text-lg text-cream/90">
             You don&apos;t come to Patty Passport just to eat a burger — you check in for a
             destination.
           </p>
@@ -57,25 +62,20 @@ export default function Home() {
               Explore Destinations
             </Button>
           </div>
+          <StampBadge className="mt-12 border-sun bg-black/10 text-sun" tilt={-6}>
+            21 destinations · now boarding
+          </StampBadge>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 z-[2] leading-[0]">
+          <WaveDivider color="var(--color-brand-cream)" />
         </div>
       </section>
 
       {/* Scene 1 — Concept snapshot */}
-      <section className="bg-white py-20">
+      <section className="bg-cream py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <p className="text-5xl">🗺️</p>
-          <div className="relative mx-auto mt-6 flex max-w-2xl items-center justify-between">
-            <div className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2 bg-sky/40" />
-            {MAP_FLAGS.map((c) => (
-              <span key={c.slug} className="relative text-3xl" role="img" aria-label={c.name}>
-                {c.flagEmoji}
-              </span>
-            ))}
-            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[140%] text-2xl">
-              ✈️
-            </span>
-          </div>
-          <div className="mt-10 space-y-3">
+          <FlightRoute flags={MAP_FLAGS} />
+          <div className="mt-6 space-y-3">
             {CONCEPT_LINES.map((line) => (
               <p key={line} className="font-heading text-2xl font-semibold text-navy sm:text-3xl">
                 {line}
@@ -93,9 +93,9 @@ export default function Home() {
             {JOURNEY_STEPS.map((step, i) => (
               <li
                 key={step}
-                className="flex items-start gap-4 rounded-2xl bg-white p-4 shadow-sm"
+                className="flex items-start gap-4 rounded-2xl border border-navy/5 bg-white p-4 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-passport-red font-heading text-sm font-bold text-white">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-passport-red font-heading text-sm font-bold text-white shadow-[0_3px_0_0_var(--color-brand-red-dark)]">
                   {i + 1}
                 </span>
                 <span className="pt-1 text-navy">{step}</span>
@@ -106,14 +106,14 @@ export default function Home() {
       </section>
 
       {/* Scene 3 — Boarding ticket example */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-3xl px-4 text-center">
+      <section className="relative overflow-hidden bg-white py-20">
+        <div className="relative mx-auto max-w-3xl px-4 text-center">
           <SectionHeading
             eyebrow="Your ticket, printed"
             title="Boarding Ticket — Lebanon"
             subtitle="Every order arrives as a boarding pass. Here's what checking in to Lebanon looks like."
           />
-          <div className="mt-10">
+          <div className="mt-12">
             <BoardingTicket
               destination="Lebanon"
               flagEmoji="🇱🇧"
@@ -125,7 +125,7 @@ export default function Home() {
               boardingNumber="PP-LBN-2026"
             />
           </div>
-          <Button href="/destinations/lebanon" className="mt-8">
+          <Button href="/destinations/lebanon" className="mt-10">
             Visit Lebanon&apos;s Destination Page
           </Button>
         </div>
@@ -138,7 +138,7 @@ export default function Home() {
           title="Pick your next route"
           subtitle="Flip through every country on the Patty Passport route map."
         />
-        <div className="mt-10">
+        <div className="mt-12">
           <CountryCarousel />
         </div>
       </section>
@@ -166,8 +166,11 @@ export default function Home() {
       </section>
 
       {/* Scene 6 — Call to action + booking */}
-      <section id="booking" className="relative overflow-hidden bg-navy py-20 text-cream">
-        <div className="relative mx-auto max-w-3xl px-4 text-center">
+      <section
+        id="booking"
+        className="bg-night-sky stars relative overflow-hidden py-20 text-cream"
+      >
+        <div className="relative z-[1] mx-auto max-w-3xl px-4 text-center">
           <h2 className="font-heading text-3xl font-semibold sm:text-4xl">Ready to check in?</h2>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="#booking-form">Reserve Your Flight</Button>
@@ -179,7 +182,7 @@ export default function Home() {
             </OpenTootyButton>
           </div>
         </div>
-        <div id="booking-form" className="relative mt-14 px-4">
+        <div id="booking-form" className="relative z-[1] mt-14 px-4">
           <ReservationForm />
         </div>
       </section>

@@ -18,40 +18,77 @@ export function BoardingTicket({
   boardingNumber: string;
 }) {
   const rows: [string, string][] = [
-    ["Destination", `${destination} ${flagEmoji}`],
-    ["Route", route],
     ["Passenger", passenger],
     ["Seat", seat],
-    ["Meal", meal],
+    ["Route", route],
     ["Gate", gate],
   ];
 
   return (
-    <div className="relative mx-auto flex max-w-xl overflow-hidden rounded-2xl border-2 border-dashed border-navy/20 bg-white shadow-xl">
-      <div className="flex-1 p-6 sm:p-8">
-        <p className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-sky-dark">
-          Patty Passport Routes
-        </p>
-        <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+    <div className="relative mx-auto flex max-w-xl -rotate-1 overflow-visible rounded-2xl bg-white shadow-[0_20px_45px_-15px_rgba(22,50,79,0.4)]">
+      <div className="flex-1 rounded-l-2xl bg-[linear-gradient(180deg,#fffdf8,white)] p-6 sm:p-8">
+        <div className="flex items-center justify-between">
+          <p className="font-heading text-xs font-bold uppercase tracking-[0.25em] text-sky-dark">
+            Patty Passport Routes
+          </p>
+          <span aria-hidden="true" className="text-lg">
+            ✈️
+          </span>
+        </div>
+        <p className="mt-3 font-heading text-2xl font-bold text-navy sm:text-3xl">{destination}</p>
+        <p className="text-sm text-navy-light">{meal}</p>
+
+        <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-dashed border-navy/15 pt-4 text-sm">
           {rows.map(([label, value]) => (
             <div key={label}>
-              <dt className="text-xs uppercase tracking-wide text-navy-light/70">{label}</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-wide text-navy-light/70">
+                {label}
+              </dt>
               <dd className="font-heading font-semibold text-navy">{value}</dd>
             </div>
           ))}
         </dl>
+
+        <div
+          aria-hidden="true"
+          className="mt-5 flex h-6 items-end gap-[3px] opacity-70"
+        >
+          {Array.from({ length: 38 }, (_, i) => (
+            <span
+              key={i}
+              className="bg-navy"
+              style={{ width: 2, height: i % 5 === 0 ? "100%" : i % 3 === 0 ? "70%" : "45%" }}
+            />
+          ))}
+        </div>
       </div>
-      <div className="flex w-28 flex-col items-center justify-center gap-2 border-l-2 border-dashed border-navy/20 bg-sky-light p-4 text-center sm:w-32">
-        <span className="text-3xl" aria-hidden="true">
+
+      {/* perforation dots between stub and body */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 bottom-0 left-[calc(100%-8rem)] flex w-0 flex-col justify-between py-2 sm:left-[calc(100%-8.5rem)]"
+      >
+        {Array.from({ length: 14 }, (_, i) => (
+          <span key={i} className="-ml-1.5 h-3 w-3 rounded-full bg-cream" />
+        ))}
+      </div>
+
+      <div className="relative flex w-28 flex-col items-center justify-center gap-2 rounded-r-2xl bg-sky-dark p-4 text-center text-cream sm:w-32">
+        <span className="text-4xl drop-shadow-[0_3px_4px_rgba(0,0,0,0.25)]" aria-hidden="true">
           {flagEmoji}
         </span>
-        <p className="text-[10px] font-semibold uppercase tracking-wide text-sky-dark">
+        <p className="text-[9px] font-semibold uppercase tracking-wide text-cream/70">
           Boarding No.
         </p>
-        <p className="font-heading text-sm font-bold text-navy">{boardingNumber}</p>
+        <p className="font-heading text-sm font-bold tracking-wide">{boardingNumber}</p>
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-3 -top-3 flex h-14 w-14 rotate-[-16deg] animate-stamp-in items-center justify-center rounded-full border-2 border-passport-red text-[8px] font-bold uppercase text-passport-red shadow-sm"
+          style={{ backgroundColor: "rgba(255,255,255,0.95)" }}
+        >
+          Confirmed
+        </span>
       </div>
-      {/* ticket notch */}
-      <div className="absolute left-[calc(100%-8rem)] top-1/2 -mt-2 h-4 w-4 -translate-x-1/2 rounded-full bg-cream sm:left-[calc(100%-8.5rem)]" />
     </div>
   );
 }
