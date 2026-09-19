@@ -65,6 +65,7 @@
 
   --font-heading: var(--font-fredoka);
   --font-sans: var(--font-jakarta);
+  --font-display: var(--font-playfair);
 
   --animate-drift: drift 60s linear infinite;
   --animate-drift-slow: drift 95s linear infinite;
@@ -155,23 +156,57 @@ h4,
   font-family: var(--font-fredoka), var(--font-jakarta), sans-serif;
 }
 
-/* Dusk-to-coral Mediterranean sunset — premium hero atmosphere */
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Dusk-to-coral Mediterranean sunset — cinematic hero atmosphere, with a
+   vignette so the frame reads as a photographed scene rather than a flat
+   gradient swatch. */
 .bg-sunset-sky {
-  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 178, 107, 0.55), transparent 60%),
+  background: radial-gradient(ellipse 120% 90% at 50% 50%, transparent 45%, rgba(5, 10, 25, 0.45) 100%),
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 200, 130, 0.5), transparent 62%),
     linear-gradient(
       180deg,
-      var(--color-brand-ink) 0%,
-      var(--color-brand-dusk) 38%,
-      #b4548f 62%,
-      var(--color-brand-coral) 84%,
-      var(--color-brand-yellow) 100%
+      #060d1f 0%,
+      #16214a 22%,
+      #4a2f6b 44%,
+      #96406f 62%,
+      #d85a4e 80%,
+      #f0a24a 100%
     );
 }
 
 /* Deep night sky for CTA/footer-adjacent sections */
 .bg-night-sky {
-  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(79, 182, 232, 0.18), transparent 65%),
+  background: radial-gradient(ellipse 90% 100% at 50% 100%, transparent 40%, rgba(0, 0, 0, 0.35) 100%),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(79, 182, 232, 0.16), transparent 65%),
     linear-gradient(180deg, var(--color-brand-ink) 0%, var(--color-brand-navy) 100%);
+}
+
+/* Deep teal nautical-chart panel — for route/map motifs */
+.bg-sea-chart {
+  background: radial-gradient(ellipse 70% 60% at 30% 20%, rgba(255, 255, 255, 0.06), transparent 60%),
+    linear-gradient(160deg, #0d3b45 0%, var(--color-brand-teal) 55%, #0a4a56 100%);
+}
+
+/* Warm ivory with a faint linen weave — replaces stark flat-white sections */
+.bg-linen {
+  background-color: #fbf6ec;
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(22, 50, 79, 0.025) 0px,
+      rgba(22, 50, 79, 0.025) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(22, 50, 79, 0.02) 0px,
+      rgba(22, 50, 79, 0.02) 1px,
+      transparent 1px,
+      transparent 5px
+    );
 }
 
 /* Subtle film-grain texture overlay for atmosphere */

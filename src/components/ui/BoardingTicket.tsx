@@ -35,7 +35,7 @@ export function BoardingTicket({
             ✈️
           </span>
         </div>
-        <p className="mt-3 font-heading text-2xl font-bold text-navy sm:text-3xl">{destination}</p>
+        <p className="font-display mt-3 text-2xl font-bold text-navy sm:text-3xl">{destination}</p>
         <p className="text-sm text-navy-light">{meal}</p>
 
         <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-dashed border-navy/15 pt-4 text-sm">
@@ -83,8 +83,12 @@ export function BoardingTicket({
         <p className="font-heading text-sm font-bold tracking-wide">{boardingNumber}</p>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -right-3 -top-3 flex h-14 w-14 rotate-[-16deg] animate-stamp-in items-center justify-center rounded-full border-2 border-passport-red text-[8px] font-bold uppercase text-passport-red shadow-sm"
-          style={{ backgroundColor: "rgba(255,255,255,0.95)" }}
+          className="animate-stamp-in pointer-events-none absolute -right-2 -top-2 flex h-14 w-14 rotate-[-18deg] items-center justify-center rounded-full text-[8px] font-bold uppercase tracking-wide text-passport-red/90"
+          style={{
+            border: "1.5px solid currentColor",
+            boxShadow: "inset 0 0 0 3px rgba(255,255,255,0.9), inset 0 0 0 4px currentColor",
+            backgroundColor: "rgba(255, 255, 255, 0.15)",
+          }}
         >
           Confirmed
         </span>

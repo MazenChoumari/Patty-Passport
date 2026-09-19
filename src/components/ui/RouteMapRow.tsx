@@ -10,15 +10,16 @@ export function RouteMapRow({
   onHoverSlug?: (slug: string) => void;
 }) {
   return (
-    <div
-      className="relative mx-auto flex max-w-3xl flex-wrap justify-center gap-3 rounded-[2rem] border-2 border-dashed border-sky-dark/25 p-7 shadow-inner"
-      style={{
-        backgroundColor: "var(--color-brand-sky-light)",
-        backgroundImage:
-          "radial-gradient(rgba(29,111,165,0.14) 1.2px, transparent 1.2px)",
-        backgroundSize: "16px 16px",
-      }}
-    >
+    <div className="bg-sea-chart relative mx-auto flex max-w-3xl flex-wrap justify-center gap-3 rounded-[1.75rem] border border-sun/20 p-7 shadow-[0_20px_40px_-20px_rgba(6,20,25,0.6)]">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-[1.75rem] opacity-40"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px)",
+          backgroundSize: "18px 18px",
+        }}
+      />
       {countries.map((c) => {
         const isActive = c.slug === activeSlug;
         return (
@@ -30,8 +31,8 @@ export function RouteMapRow({
             onFocus={() => onHoverSlug?.(c.slug)}
             className={
               isActive
-                ? "flex h-14 w-14 scale-110 items-center justify-center rounded-full border-2 border-dashed border-passport-red bg-white text-3xl shadow-lg shadow-passport-red/30 transition-transform"
-                : "flex h-11 w-11 items-center justify-center rounded-full bg-white/70 text-xl opacity-60 grayscale-[20%] transition-transform hover:scale-105 hover:opacity-100"
+                ? "relative flex h-14 w-14 scale-110 items-center justify-center rounded-full border-2 border-sun bg-white text-3xl shadow-[0_0_0_4px_rgba(245,185,66,0.25)] transition-transform"
+                : "relative flex h-11 w-11 items-center justify-center rounded-full bg-white/80 text-xl opacity-70 grayscale-[15%] transition-transform hover:scale-105 hover:opacity-100"
             }
           >
             {c.flagEmoji}

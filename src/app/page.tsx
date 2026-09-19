@@ -43,41 +43,50 @@ export default function Home() {
         <SunGlow className="left-1/2 top-[-9rem] -translate-x-1/2 opacity-70" />
         <CloudLayer tone="dark" />
         <div className="relative z-[2] mx-auto max-w-3xl px-4 text-center">
-          <p className="font-heading text-sm font-semibold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
             Mediterranean journeys. Global flavors.
           </p>
-          <h1 className="mt-4 font-heading text-5xl font-bold text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)] sm:text-7xl">
+          <h1 className="font-display mt-5 text-6xl font-bold text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-8xl">
             Patty Passport
           </h1>
-          <p className="mt-4 font-heading text-xl font-semibold text-sun drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:text-2xl">
+          <p className="mt-5 font-heading text-xl font-semibold text-sun drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:text-2xl">
             Stamp your way through flavor.
           </p>
           <p className="mx-auto mt-6 max-w-xl text-lg text-cream/90">
             You don&apos;t come to Patty Passport just to eat a burger — you check in for a
             destination.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="mt-9 flex flex-wrap justify-center gap-4">
             <Button href="#booking">Get Your Boarding Pass</Button>
             <Button href="/destinations" variant="outline">
               Explore Destinations
             </Button>
           </div>
-          <StampBadge className="mt-12 border-sun bg-black/10 text-sun" tilt={-6}>
+          <StampBadge className="mt-12 text-sun" tilt={-6}>
             21 destinations · now boarding
           </StampBadge>
         </div>
         <div className="absolute inset-x-0 bottom-0 z-[2] leading-[0]">
-          <WaveDivider color="var(--color-brand-cream)" />
+          <WaveDivider color="#fbf6ec" />
         </div>
       </section>
 
       {/* Scene 1 — Concept snapshot */}
-      <section className="bg-cream py-20">
+      <section className="bg-linen py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <FlightRoute flags={MAP_FLAGS} />
-          <div className="mt-6 space-y-3">
-            {CONCEPT_LINES.map((line) => (
-              <p key={line} className="font-heading text-2xl font-semibold text-navy sm:text-3xl">
+          <div className="bg-sea-chart mx-auto max-w-2xl rounded-[2rem] p-6 shadow-[0_24px_48px_-24px_rgba(6,20,25,0.5)] sm:p-8">
+            <FlightRoute flags={MAP_FLAGS} />
+          </div>
+          <div className="mt-10 space-y-3">
+            {CONCEPT_LINES.map((line, i) => (
+              <p
+                key={line}
+                className={
+                  i === 0
+                    ? "font-display text-3xl font-bold text-navy sm:text-4xl"
+                    : "font-heading text-lg text-navy-light sm:text-xl"
+                }
+              >
                 {line}
               </p>
             ))}
@@ -86,19 +95,19 @@ export default function Home() {
       </section>
 
       {/* Scene 2 — Journey structure */}
-      <section className="bg-sky-light py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading eyebrow="How it works" title="Check in to the world" />
+      <section className="bg-sea-chart relative py-20 text-cream">
+        <div className="relative mx-auto max-w-3xl px-4">
+          <SectionHeading eyebrow="How it works" title="Check in to the world" tone="light" />
           <ol className="mt-10 space-y-4">
             {JOURNEY_STEPS.map((step, i) => (
               <li
                 key={step}
-                className="flex items-start gap-4 rounded-2xl border border-navy/5 bg-white p-4 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md"
+                className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm transition-colors hover:bg-white/[0.1]"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-passport-red font-heading text-sm font-bold text-white shadow-[0_3px_0_0_var(--color-brand-red-dark)]">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-sun/60 font-heading text-sm font-bold text-sun">
                   {i + 1}
                 </span>
-                <span className="pt-1 text-navy">{step}</span>
+                <span className="pt-1 text-cream/90">{step}</span>
               </li>
             ))}
           </ol>
@@ -106,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* Scene 3 — Boarding ticket example */}
-      <section className="relative overflow-hidden bg-white py-20">
+      <section className="bg-linen relative overflow-hidden py-20">
         <div className="relative mx-auto max-w-3xl px-4 text-center">
           <SectionHeading
             eyebrow="Your ticket, printed"
@@ -132,7 +141,7 @@ export default function Home() {
       </section>
 
       {/* Scene 4 — Auto-scroll country cards */}
-      <section className="bg-sky-light py-20">
+      <section className="bg-linen py-20">
         <SectionHeading
           eyebrow="21 destinations and counting"
           title="Pick your next route"
@@ -144,16 +153,16 @@ export default function Home() {
       </section>
 
       {/* Scene 5 — Experience promise */}
-      <section className="bg-white py-20">
+      <section className="bg-gradient-to-b from-sun-light/50 via-cream to-cream py-20">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="font-heading text-3xl font-semibold text-navy sm:text-4xl">
+          <h2 className="font-display text-3xl font-bold text-navy sm:text-4xl">
             One sea. Many cultures. Endless flavor.
           </h2>
           <ul className="mx-auto mt-10 grid max-w-2xl gap-4 text-left">
             {PROMISE_BULLETS.map((b) => (
               <li
                 key={b}
-                className="flex items-start gap-3 rounded-2xl border border-navy/10 bg-cream p-4"
+                className="flex items-start gap-3 rounded-2xl border border-navy/10 bg-white/70 p-4"
               >
                 <span className="mt-0.5 text-sun-dark" aria-hidden="true">
                   ★
@@ -171,7 +180,7 @@ export default function Home() {
         className="bg-night-sky stars relative overflow-hidden py-20 text-cream"
       >
         <div className="relative z-[1] mx-auto max-w-3xl px-4 text-center">
-          <h2 className="font-heading text-3xl font-semibold sm:text-4xl">Ready to check in?</h2>
+          <h2 className="font-display text-3xl font-bold sm:text-4xl">Ready to check in?</h2>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="#booking-form">Reserve Your Flight</Button>
             <Button href="/menu" variant="secondary">

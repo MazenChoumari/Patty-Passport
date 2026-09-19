@@ -12,11 +12,15 @@ export function CloudLayer({
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
       aria-hidden="true"
     >
-      <div className="absolute top-[6%] left-[-15%] w-[150%] animate-drift-slow opacity-70 blur-[1px]">
-        <CloudRow fill={fill} scale={0.8} />
+      <div
+        className={`absolute top-[4%] left-[-15%] w-[150%] animate-drift-slow ${tone === "dark" ? "opacity-60 blur-md" : "opacity-70 blur-[1px]"}`}
+      >
+        <CloudRow fill={fill} scale={0.75} />
       </div>
-      <div className="absolute top-[22%] left-[-15%] w-[150%] animate-drift opacity-90">
-        <CloudRow fill={fill} scale={1.1} />
+      <div
+        className={`absolute top-[24%] left-[-15%] w-[150%] animate-drift ${tone === "dark" ? "opacity-70 blur-sm" : "opacity-90"}`}
+      >
+        <CloudRow fill={fill} scale={1.05} />
       </div>
     </div>
   );

@@ -14,29 +14,28 @@ export function DestinationsExplorer() {
 
   return (
     <div>
-      <section className="bg-cream py-10">
+      <section className="bg-linen py-14">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <RouteMapRow activeSlug={activeSlug} onHoverSlug={setActiveSlug} />
 
           <div
             key={activeSlug}
-            className="animate-stamp-in relative mx-auto mt-8 max-w-md rotate-[-1deg] rounded-3xl border-2 border-dashed border-navy/15 bg-[linear-gradient(180deg,#fffdf8,white)] p-7 shadow-[0_16px_32px_-12px_rgba(22,50,79,0.25)]"
+            className="animate-stamp-in relative mx-auto mt-8 max-w-md rounded-2xl border border-navy/10 bg-white p-7 shadow-[0_20px_40px_-20px_rgba(22,50,79,0.3)]"
           >
-            <span
-              className="absolute -top-4 -right-3 flex h-14 w-14 rotate-[10deg] items-center justify-center rounded-full border-2 border-dashed border-passport-red bg-white text-[9px] font-bold uppercase text-passport-red shadow-sm"
-              aria-hidden="true"
-            >
-              #{String(active.destinationNumber).padStart(2, "0")}
+            <span className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-sun/50 text-[11px] font-semibold text-navy-light">
+              {String(active.destinationNumber).padStart(2, "0")}
             </span>
-            <span
-              className="animate-wave inline-block text-5xl drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]"
-              role="img"
-              aria-label={`${active.name} flag`}
-              style={{ transformOrigin: "70% 70%" }}
-            >
-              {active.flagEmoji}
+            <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-sun/40 bg-cream shadow-inner">
+              <span
+                className="animate-wave inline-block text-3xl"
+                role="img"
+                aria-label={`${active.name} flag`}
+                style={{ transformOrigin: "70% 70%" }}
+              >
+                {active.flagEmoji}
+              </span>
             </span>
-            <h3 className="mt-2 font-heading text-xl font-semibold text-navy">{active.name}</h3>
+            <h3 className="font-display mt-3 text-xl font-semibold text-navy">{active.name}</h3>
             {detail ? (
               <>
                 <p dir="auto" className="mt-2 font-heading text-lg font-semibold text-navy">
@@ -48,9 +47,10 @@ export function DestinationsExplorer() {
             ) : (
               <p className="mt-2 text-sm text-navy-light">{active.tagline}</p>
             )}
+            <span className="mx-auto mt-3 block h-px w-10 bg-sun/70" />
             <Link
               href={`/destinations/${active.slug}`}
-              className="mt-4 inline-block text-sm font-semibold text-passport-red underline underline-offset-4"
+              className="mt-3 inline-block text-sm font-semibold text-passport-red-dark underline underline-offset-4"
             >
               Visit {active.name} →
             </Link>
@@ -58,7 +58,7 @@ export function DestinationsExplorer() {
         </div>
       </section>
 
-      <section className="bg-sky-light py-14">
+      <section className="bg-linen py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid grid-cols-2 justify-items-center gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {countries.map((c) => (

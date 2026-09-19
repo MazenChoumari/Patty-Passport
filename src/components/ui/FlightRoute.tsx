@@ -8,11 +8,11 @@ export function FlightRoute({ flags }: { flags: { emoji: string; label: string }
       <path
         d={PATH}
         fill="none"
-        stroke="var(--color-brand-sky)"
-        strokeWidth="3"
-        strokeDasharray="2 12"
+        stroke="var(--color-brand-yellow)"
+        strokeWidth="2.5"
+        strokeDasharray="1 11"
         strokeLinecap="round"
-        opacity={0.6}
+        opacity={0.85}
       />
       <text fontSize="34">
         <animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path={PATH} />
