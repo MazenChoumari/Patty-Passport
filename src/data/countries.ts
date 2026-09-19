@@ -5,9 +5,13 @@ export type RouteZone =
   | "Adriatic Route"
   | "North African Route";
 
+import type { PriceItemType } from "@/data/pricing";
+
 export type MenuItem = {
   name: string;
   description: string;
+  priceType: PriceItemType;
+  tags?: string[];
   /** true when this item is a reasonable placeholder suggestion, not from the source brief */
   suggested?: boolean;
 };
@@ -64,6 +68,117 @@ export const countries: Country[] = [
     flagEmoji: "🇱🇧",
     route: "Levant Route",
     tagline: "Cedars, souks & toum",
+    detail: {
+      greetingLocal: "يا ميت أهلا وسهلا بلبنان، نورتونا!",
+      greetingRomanized: "Ya meet ahla w sahla bi Lebnen, nawartouna!",
+      greetingEnglish: "A hundred welcomes to Lebanon, you have brightened our day!",
+      cultureFacts: [
+        "Lebanon is home to some of the oldest cedar forests on Earth — the cedar sits proudly on the national flag.",
+        "Beirut's souks have been trading spices, textiles and gossip for over 5,000 years.",
+        "Lebanese hospitality runs deep: guests are traditionally served food the moment they sit down, invited or not.",
+        "Toum, the garlicky whipped sauce on your Shawarma Souk Burger, is whipped by hand into a cloud-like emulsion — no eggs required.",
+        "Lebanon has more registered UNESCO World Heritage Sites per capita than almost any other country in the region.",
+      ],
+      food: {
+        vegBurger: {
+          name: "Halloumi Village Burger",
+          description:
+            "Grilled halloumi, tomato, basil, cucumber-mint, lemony labneh, olive oil, on a sesame or za'atar brioche.",
+          priceType: "vegBurger",
+          tags: ["Vegetarian", "Halal-friendly", "No pork"],
+        },
+        chickenBurger: {
+          name: "Shish Tawouk Street Burger",
+          description:
+            "Yoghurt-garlic-lemon marinated chicken, lettuce, tomato, pickles, coriander, toum, soft potato bun.",
+          priceType: "chickenBurger",
+          tags: ["Halal-friendly", "No pork"],
+        },
+        beefBurger: {
+          name: "Shawarma Souk Burger",
+          description:
+            "Beef patty topped with shawarma slices, peppers, onions, sumac, pomegranate molasses, toum, sesame bun.",
+          priceType: "beefBurger",
+          tags: ["Halal-friendly", "No pork"],
+        },
+        quickBiteHero: "chicken",
+        loadedFries: [
+          {
+            name: "Batata Harra Fries",
+            description: "Garlic, coriander, chilli, lemon, tahini-lemon drizzle.",
+            priceType: "loadedFries",
+            tags: ["Vegan-friendly", "Vegetarian"],
+          },
+          {
+            name: "Za'atar & Cheese Fries",
+            description: "Za'atar, halloumi/akkawi cheese, tomato, yoghurt-mint sauce.",
+            priceType: "loadedFries",
+            tags: ["Vegetarian", "Contains dairy"],
+          },
+        ],
+        salad: {
+          name: "Tabbouleh Mountain Salad",
+          description: "Parsley, mint, tomato, fine bulgur, lemon, olive oil, allspice.",
+          priceType: "salad",
+          tags: ["Vegan-friendly", "Vegetarian"],
+        },
+        coldDrink: {
+          name: "Lemon Mint Corniche Cooler",
+          description: "Fresh lemon and mint over ice, inspired by Beirut's seaside walk.",
+          priceType: "coldCountryDrink",
+          tags: ["Alcohol-free"],
+        },
+        alcoholicDrink: {
+          name: "Arak Sea Breeze",
+          description: "Lebanon's aniseed spirit, lengthened with soda and citrus.",
+          priceType: "alcoholicCountryDrink",
+          tags: ["Contains alcohol"],
+        },
+        hotDrink: {
+          name: "Levant Strong Coffee",
+          description: "Finely ground and simmered Lebanese-style, cardamom option available.",
+          priceType: "hotDrink",
+          tags: ["Vegan-friendly"],
+        },
+        desserts: [
+          {
+            name: "Knefe bel Kaak",
+            description:
+              "Warm cheese and semolina in toasted kaak bread, orange blossom syrup, pistachios.",
+            priceType: "dessert",
+            tags: ["Vegetarian", "Contains nuts"],
+          },
+          {
+            name: "Baklava Ice-Cream Sundae",
+            description: "Layered baklava crumble over ice cream, honey-nut syrup.",
+            priceType: "dessert",
+            tags: ["Vegetarian", "Contains nuts"],
+          },
+        ],
+      },
+      playlist: {
+        name: "Beirut Nights",
+        tracks: [
+          { title: "Nassam Alayna El Hawa", artist: "Fairuz" },
+          { title: "Bala Wala Shi", artist: "Mashrou' Leila" },
+          { title: "Balak", artist: "Yasmine Hamdan" },
+          { title: "Aatini El Nay", artist: "Fairuz" },
+        ],
+      },
+      activities: {
+        greetingPractice: {
+          phrase: "Marhaba!",
+          meaning: "Hello! — the everyday Lebanese greeting.",
+        },
+        quiz: {
+          question: "What is the national tree of Lebanon, found on its flag?",
+          options: ["Olive tree", "Cedar tree", "Palm tree", "Fig tree"],
+          answerIndex: 1,
+        },
+        kidsActivity:
+          "Color the Lebanese flag: red, white, red stripes with a green cedar tree in the middle.",
+      },
+    },
   },
   {
     slug: "syria",
