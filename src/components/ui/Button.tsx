@@ -5,15 +5,15 @@ type Variant = "primary" | "secondary" | "outline";
 
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary:
-    "bg-passport-red text-white hover:bg-passport-red-dark shadow-md shadow-passport-red/20",
+    "bg-passport-red text-white border-navy hover:bg-passport-red-dark shadow-[3px_3px_0_0_var(--color-brand-navy)] hover:shadow-[1px_1px_0_0_var(--color-brand-navy)] hover:translate-x-[2px] hover:translate-y-[2px]",
   secondary:
-    "bg-sun text-navy hover:bg-sun-dark shadow-md shadow-sun/30",
+    "bg-sun text-navy border-navy hover:bg-sun-dark shadow-[3px_3px_0_0_var(--color-brand-navy)] hover:shadow-[1px_1px_0_0_var(--color-brand-navy)] hover:translate-x-[2px] hover:translate-y-[2px]",
   outline:
-    "bg-white/90 text-navy border-2 border-navy/15 hover:border-sky-dark hover:text-sky-dark",
+    "bg-transparent text-current border-current hover:bg-current/10",
 };
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-heading font-semibold text-sm sm:text-base transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-dark";
+  "inline-flex items-center justify-center gap-2 rounded-md border-2 px-7 py-3.5 font-shout text-base sm:text-lg tracking-wide uppercase transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-dark";
 
 export function Button({
   children,

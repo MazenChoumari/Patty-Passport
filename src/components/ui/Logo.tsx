@@ -4,50 +4,62 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link
       href="/"
-      className="flex items-center gap-2 shrink-0 group"
+      className="group flex shrink-0 items-center gap-2.5"
       aria-label="Patty Passport — home"
     >
       <svg
-        width="36"
-        height="36"
+        width="40"
+        height="40"
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0 transition-transform group-hover:-rotate-6"
+        className="shrink-0 transition-transform group-hover:scale-105"
         aria-hidden="true"
       >
-        <rect x="4" y="3" width="40" height="42" rx="6" fill="var(--color-brand-navy)" />
-        <rect
-          x="4"
-          y="3"
-          width="40"
-          height="42"
-          rx="6"
-          stroke="var(--color-brand-yellow)"
-          strokeWidth="1.5"
-        />
-        <circle cx="24" cy="18" r="7" stroke="var(--color-brand-yellow)" strokeWidth="1.6" fill="none" />
+        <circle cx="24" cy="24" r="22.5" fill="var(--color-brand-navy)" />
+        <circle cx="24" cy="24" r="22.5" stroke="var(--color-brand-yellow)" strokeWidth="1.5" />
         <path
-          d="M24 11.5c-4 4-4 10 0 13M24 11.5c4 4 4 10 0 13M17.5 18h13"
-          stroke="var(--color-brand-yellow)"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-        />
-        <path
-          d="M11 32c4-2.5 7-2.5 13 0s9 2.5 13 0"
+          d="M3 27c5-3 9 4 21 4s16-7 21-4"
           stroke="var(--color-brand-sky)"
-          strokeWidth="1.6"
+          strokeWidth="2"
           strokeLinecap="round"
           fill="none"
         />
         <path
-          d="M30 30.5l4.2-1.6c.6-.2 1.2.4 1 1l-1.6 4.2-1-.3.6-2.6-2.4 2.2-.8-.7 2.2-2.4-2.6.6-.3-1z"
-          fill="var(--color-brand-red)"
+          d="M2 31.5c5.5-3 9.5 4 22 4s16.5-7 22-4"
+          stroke="var(--color-brand-sky)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.5"
+        />
+        <g transform="rotate(-9 24 20)">
+          <rect x="7" y="14" width="34" height="13" rx="2" fill="var(--color-brand-red)" />
+          <text
+            x="24"
+            y="23.5"
+            textAnchor="middle"
+            fontFamily="var(--font-bebas), sans-serif"
+            fontSize="12"
+            letterSpacing="1"
+            fill="white"
+          >
+            PP
+          </text>
+        </g>
+        <circle cx="37" cy="12" r="5.5" fill="var(--color-brand-yellow)" stroke="var(--color-brand-navy)" strokeWidth="1.2" />
+        <path
+          d="M35 12l1.4 1.4L39.2 10.4"
+          stroke="var(--color-brand-navy)"
+          strokeWidth="1.3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
         />
       </svg>
       {!compact && (
-        <span className="font-heading text-xl leading-none font-semibold text-navy">
-          Patty Passport
+        <span className="font-shout text-2xl leading-none tracking-wide text-navy">
+          PATTY PASSPORT
         </span>
       )}
     </Link>

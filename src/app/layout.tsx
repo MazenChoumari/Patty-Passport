@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Bebas_Neue, Fredoka, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -24,6 +24,12 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export const metadata: Metadata = {
   title: "Patty Passport — Mediterranean journeys. Global flavors.",
   description:
@@ -34,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${jakarta.variable} ${playfair.variable} h-full antialiased`}
+      className={`${fredoka.variable} ${jakarta.variable} ${playfair.variable} ${bebas.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream text-navy">
         <RouteProgressBar />

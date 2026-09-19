@@ -1,35 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Sky blue — Mediterranean sky & clouds */
-  --color-brand-sky-light: #eaf6fd;
-  --color-brand-sky: #4fb6e8;
-  --color-brand-sky-dark: #1d6fa5;
+  /* Sky blue — the travel/adventure emotional color */
+  --color-brand-sky-light: #d8f0fc;
+  --color-brand-sky: #159fe8;
+  --color-brand-sky-dark: #0b6fa8;
 
-  /* Passport red */
-  --color-brand-red-light: #f8dcd9;
-  --color-brand-red: #d8443c;
-  --color-brand-red-dark: #a32c26;
+  /* Passport red — the bold emotional color */
+  --color-brand-red-light: #fbdad6;
+  --color-brand-red: #e8352b;
+  --color-brand-red-dark: #a81a14;
 
-  /* Warm sun yellow */
-  --color-brand-yellow-light: #fff1cf;
-  --color-brand-yellow: #f5b942;
-  --color-brand-yellow-dark: #cf9420;
+  /* Sun yellow — the energy emotional color */
+  --color-brand-yellow-light: #fff0c2;
+  --color-brand-yellow: #ffc93c;
+  --color-brand-yellow-dark: #cf8f00;
 
-  /* Cream / sand */
-  --color-brand-cream: #fcf6ea;
-  --color-brand-cream-dark: #f2e6cf;
+  /* Warm paper — neutral canvas only, never the emotional lead */
+  --color-brand-cream: #fbf3e4;
+  --color-brand-cream-dark: #efdfc2;
 
-  /* Deep navy — text/contrast, used instead of pure black */
-  --color-brand-navy: #16324f;
-  --color-brand-navy-light: #2e4f73;
+  /* Ink — near-black neutral for text/dark sections, replaces navy entirely */
+  --color-brand-navy: #14171c;
+  --color-brand-navy-light: #4a4f58;
 
-  /* Extended atmosphere palette — dusk/night sky depth, sunset warmth */
-  --color-brand-ink: #0a1930;
-  --color-brand-dusk: #2a3d7a;
-  --color-brand-coral: #ff7a59;
-  --color-brand-coral-dark: #e2593a;
+  /* Extended atmosphere palette */
+  --color-brand-ink: #0c0e12;
   --color-brand-teal: #0d6e78;
+  --color-brand-gold-deep: #b9791a;
 
   --background: var(--color-brand-cream);
   --foreground: var(--color-brand-navy);
@@ -55,10 +53,8 @@
   --color-navy-light: var(--color-brand-navy-light);
 
   --color-ink: var(--color-brand-ink);
-  --color-dusk: var(--color-brand-dusk);
-  --color-coral: var(--color-brand-coral);
-  --color-coral-dark: var(--color-brand-coral-dark);
   --color-teal: var(--color-brand-teal);
+  --color-gold-deep: var(--color-brand-gold-deep);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -66,6 +62,7 @@
   --font-heading: var(--font-fredoka);
   --font-sans: var(--font-jakarta);
   --font-display: var(--font-playfair);
+  --font-shout: var(--font-bebas);
 
   --animate-drift: drift 60s linear infinite;
   --animate-drift-slow: drift 95s linear infinite;
@@ -73,6 +70,8 @@
   --animate-stamp-in: stampIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   --animate-twinkle: twinkle 3.5s ease-in-out infinite;
   --animate-bob: bob 5s ease-in-out infinite;
+  --animate-marquee: marquee 34s linear infinite;
+  --animate-flicker: flicker 6s steps(1) infinite;
 }
 
 @keyframes drift {
@@ -142,6 +141,35 @@
   }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.4;
+  }
+  94% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.5;
+  }
+  96%,
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -160,34 +188,44 @@ h4,
   font-family: var(--font-playfair), Georgia, serif;
 }
 
-/* Dusk-to-coral Mediterranean sunset — cinematic hero atmosphere, with a
-   vignette so the frame reads as a photographed scene rather than a flat
-   gradient swatch. */
-.bg-sunset-sky {
-  background: radial-gradient(ellipse 120% 90% at 50% 50%, transparent 45%, rgba(5, 10, 25, 0.45) 100%),
-    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 200, 130, 0.5), transparent 62%),
+.font-shout {
+  font-family: var(--font-bebas), var(--font-jakarta), sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Mediterranean midday sky — vivid azure into sun-gold, with a red horizon
+   flare. The hero's "terminal window" view, not a moody dusk gradient. */
+.bg-terminal-sky {
+  background: radial-gradient(ellipse 60% 45% at 78% 8%, rgba(255, 255, 255, 0.55), transparent 60%),
+    radial-gradient(ellipse 110% 70% at 50% 100%, rgba(232, 53, 43, 0.35), transparent 65%),
     linear-gradient(
       180deg,
-      #060d1f 0%,
-      #16214a 22%,
-      #4a2f6b 44%,
-      #96406f 62%,
-      #d85a4e 80%,
-      #f0a24a 100%
+      #04101e 0%,
+      #0b3e63 18%,
+      #159fe8 46%,
+      #56c6f2 66%,
+      #ffc93c 86%,
+      #ff9a3d 100%
     );
 }
 
-/* Deep night sky for CTA/footer-adjacent sections */
+/* Ink-black departure-lounge night — for the closing CTA */
 .bg-night-sky {
-  background: radial-gradient(ellipse 90% 100% at 50% 100%, transparent 40%, rgba(0, 0, 0, 0.35) 100%),
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(79, 182, 232, 0.16), transparent 65%),
-    linear-gradient(180deg, var(--color-brand-ink) 0%, var(--color-brand-navy) 100%);
+  background: radial-gradient(ellipse 90% 100% at 50% 100%, transparent 40%, rgba(0, 0, 0, 0.4) 100%),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(21, 159, 232, 0.18), transparent 65%),
+    linear-gradient(180deg, var(--color-brand-ink) 0%, #1a1e26 100%);
 }
 
 /* Deep teal nautical-chart panel — for route/map motifs */
 .bg-sea-chart {
   background: radial-gradient(ellipse 70% 60% at 30% 20%, rgba(255, 255, 255, 0.06), transparent 60%),
     linear-gradient(160deg, #0d3b45 0%, var(--color-brand-teal) 55%, #0a4a56 100%);
+}
+
+/* Bold red panel — for the stamps/rewards scene */
+.bg-passport-panel {
+  background: radial-gradient(ellipse 70% 60% at 80% 0%, rgba(255, 255, 255, 0.18), transparent 60%),
+    linear-gradient(160deg, #b81f17 0%, var(--color-brand-red) 55%, #c22a20 100%);
 }
 
 /* Warm ivory with a faint linen weave — replaces stark flat-white sections */
